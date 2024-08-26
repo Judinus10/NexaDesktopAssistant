@@ -37,5 +37,11 @@ $(document).ready(function () {
         },
 
     });
-    
+
+    //mic button click animation
+    $("#button").click(function () { 
+        $("#Oval").attr("hidden", true);
+        $("#siriWave").attr("hidden", false);
+    });
+
 });

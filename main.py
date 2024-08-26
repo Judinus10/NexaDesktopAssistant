@@ -1,7 +1,9 @@
 import os
 import eel
 
-from.engine.features import *
+import sys
+sys.path.append('engine\features.py')
+
 
 eel.init("www")
 

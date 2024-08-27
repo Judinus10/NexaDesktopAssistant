@@ -43,7 +43,7 @@ $(document).ready(function () {
         eel.playAssistantSound()
         $("#Oval").attr("hidden", true);
         $("#siriWave").attr("hidden", false);
-        eel.takecommands()()
+        eel.takecommand()()
     });
 
 });

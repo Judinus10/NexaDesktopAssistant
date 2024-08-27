@@ -1,6 +1,5 @@
 import pyttsx3
 import speech_recognition as sr
-import pyaudio
 import eel
 
 
@@ -20,6 +19,7 @@ def takecommand():
     with sr.Microphone() as source:
 
         print("Listning....")
+        eel.DisplayMessage("Listning....")
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source)
 
@@ -27,14 +27,11 @@ def takecommand():
 
     try:
         print("recognizing")
+        eel.DisplayMessage("recognizing....")
         query = r.recognize_google(audio,language ='en-in')
-        print(f"user said : (query)")
+        print(f"user said : {query}")
+        eel.DisplayMessage(query)
+        speak(query)
     except Exception as e:
         return " "
     return query.lower()
-
-text =takecommand()
-
-speak(text)
-
-speak("I'm Jarvis")

@@ -40,10 +40,10 @@ $(document).ready(function () {
 
     //mic button click animation
     $("#button").click(function () { 
-        eel.playAssistantSound()
+        // eel.playAssistantSound()
         $("#Oval").attr("hidden", true);
         $("#siriWave").attr("hidden", false);
-        eel.allCommands()()
+        // eel.allCommands()()
     });
 
 });

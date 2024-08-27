@@ -1,6 +1,7 @@
 import pyttsx3
 import speech_recognition as sr
 import pyaudio
+import eel
 
 
 def speak(text):
@@ -11,6 +12,7 @@ def speak(text):
     engine.say(text)
     engine.runAndWait()
 
+@eel.expose
 def takecommand():
     
     r = sr.Recognizer()

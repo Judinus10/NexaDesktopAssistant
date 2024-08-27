@@ -1,11 +1,14 @@
 import os
 import eel
 
-import sys
-sys.path.append('engine\features.py')
+
+from engine._pycache_.features import *
+from engine._pycache_.command import *
 
 
 eel.init("www")
+
+playAssistantSound()
 
 os.system('start msedge.exe --app="http://localhost:8000/index.html"')
 

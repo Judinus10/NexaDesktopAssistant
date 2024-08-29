@@ -11,7 +11,6 @@ def speak(text):
     engine.say(text)
     engine.runAndWait()
 
-@eel.expose
 def takecommand():
     
     r = sr.Recognizer()
@@ -36,3 +35,14 @@ def takecommand():
     except Exception as e:
         return " "
     return query.lower()
+
+@eel.expose
+def allCommands():
+
+    query = takecommand()
+    print(query)
+
+    if open in query:
+        print("I Run")
+    else :
+        print("Not Run")

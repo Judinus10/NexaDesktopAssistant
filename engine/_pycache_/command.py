@@ -42,7 +42,8 @@ def allCommands():
     query = takecommand()
     print(query)
 
-    if open in query:
-        print("I Run")
+    if "open" in query:
+        from engine._pycache_.features import openCommand
+        openCommand(query)
     else :
         print("Not Run")

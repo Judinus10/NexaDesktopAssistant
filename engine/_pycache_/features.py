@@ -21,13 +21,25 @@ def openCommand(query):
     if query!= "":
         speak("Opening"+query)
         os.system("start"+query)
+       
     else:
         speak("not found")
         
 def PlayYoutube(query):
-    search_term = extract_yt_term(query)
-    speak("Playing "+search_term+" on YouTube")
-    kit.playonyt(search_term)
+    # Assuming `query` is something like "play song on YouTube"
+    search_term = query.replace("play ", "").replace("on youtube", "").strip()
+    
+    # Check if `search_term` is empty or None
+    if not search_term:
+        speak("I didn't catch what you say, please say it again.")
+        return
+
+    speak("Playing " + search_term + " on YouTube")
+    
+    # Construct the search URL and open YouTube
+    url = f"https://www.youtube.com/results?search_query={search_term}"
+    os.system(f"start {url}")
+
 
 def extract_yt_term(command):
     #define regular expression pattern to capture the song name

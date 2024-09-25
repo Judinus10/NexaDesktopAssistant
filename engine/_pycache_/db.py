@@ -8,10 +8,10 @@ query = "CREATE TABLE IF NOT EXISTS sys_command(id integer primary key, name VAR
 cursor.execute(query)
 
 
-# # #insert into table
+#insert into table
 '''query = """
 INSERT INTO sys_command (id, name, path) 
-VALUES (001, 'Github Desktop', 'C:\\Users\\ASUS\\OneDrive - Informatics Institute of Technology\\Desktop\\GitHub Desktop.lnk')
+VALUES (004, 'vscode', '"C:\\Users\\ASUS\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code.lnk"')
 """
 cursor.execute(query)
 conn.commit()'''
@@ -27,3 +27,8 @@ query = "INSERT INTO web_command VALUES (null,'youtube', 'https://www.youtube.co
 cursor.execute(query)
 conn.commit()'''
 
+# testing module
+app_name = "Github Desktop"
+cursor.execute('SELECT path FROM sys_command WHERE name IN (?)', (app_name,))
+results = cursor.fetchall()
+print(results[0])

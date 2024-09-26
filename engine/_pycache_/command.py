@@ -42,17 +42,20 @@ def takecommand():
 @eel.expose
 def allCommands():
 
-    query = takecommand()
-    print(query)
+    try:
+        query = takecommand()
+        print(query)
 
-    if "open" in query:
-        from engine._pycache_.features import openCommand
-        openCommand(query)
-    elif "on youtube":
-        from engine._pycache_.features import PlayYoutube
-        PlayYoutube(query)
-    else :
-        print("Not Run")
+        if "open" in query:
+            from engine._pycache_.features import openCommand
+            openCommand(query)
+        elif "on youtube":
+            from engine._pycache_.features import PlayYoutube
+            PlayYoutube(query)
+        else :
+            print("Not` Run")
+    except:
+        print("Error!")
 
     eel.ShowHood()
 

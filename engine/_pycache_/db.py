@@ -42,41 +42,56 @@ cursor.execute(query_web_command)'''
 # print("Web command added successfully")
 
 # Create contacts table if it doesn't exist
-query_contacts = """
-CREATE TABLE IF NOT EXISTS contacts(
-    id INTEGER PRIMARY KEY, 
-    name VARCHAR(100), 
-    mobile_no VARCHAR(15)
-)
-"""
-cursor.execute(query_contacts)
+# query_contacts = """
+# CREATE TABLE IF NOT EXISTS contacts(
+#     id INTEGER PRIMARY KEY, 
+#     name VARCHAR(100), 
+#     mobile_no VARCHAR(15)
+# )
+# """
+# cursor.execute(query_contacts)
 
-# Insert data from contacts.csv into contacts table
-# Specify the column indices you want to import (0-based index)
-desired_columns_indices = [0, 1]  # Adjust these indices to match your CSV structure
+# # Insert data from contacts.csv into contacts table
+# # Specify the column indices you want to import (0-based index)
+# desired_columns_indices = [0, 1]  # Adjust these indices to match your CSV structure
 
-with open('contacts.csv', 'r', encoding='utf-8') as csvfile:
-    csvreader = csv.reader(csvfile)
-    for row in csvreader:
-        # Select columns only if they exist in the row
-        selected_data = [row[i] for i in desired_columns_indices if i < len(row)]
+# with open('contacts.csv', 'r', encoding='utf-8') as csvfile:
+#     csvreader = csv.reader(csvfile)
+#     for row in csvreader:
+#         # Select columns only if they exist in the row
+#         selected_data = [row[i] for i in desired_columns_indices if i < len(row)]
         
-        # Ensure we have the expected number of columns
-        if len(selected_data) == len(desired_columns_indices):
-            cursor.execute(
-                '''INSERT INTO contacts (id, name, mobile_no) VALUES (null, ?, ?);''',
-                tuple(selected_data)
-            )
-        else:
-            print(f"Row skipped due to missing columns: {row}")
+#         # Ensure we have the expected number of columns
+#         if len(selected_data) == len(desired_columns_indices):
+#             cursor.execute(
+#                 '''INSERT INTO contacts (id, name, mobile_no) VALUES (null, ?, ?);''',
+#                 tuple(selected_data)
+#             )
+#         else:
+#             print(f"Row skipped due to missing columns: {row}")
 
-# Commit changes and close the connection
-conn.commit()
-conn.close()
-print("Data imported successfully.")
+# # Commit changes and close the connection
+# conn.commit()
+# conn.close()
+# print("Data imported successfully.")
 
 #  4. Insert Single contacts (Optional)
-query = "INSERT INTO contacts VALUES (null,'pawan', '1234567890')"
+'''query = "INSERT INTO contacts VALUES (null,'pawan', '1234567890')"
 cursor.execute(query)
-conn.commit()
+conn.commit()'''
+
+'''
+# Query to search contacts
+query = '10/27 Nitharsan'.strip().lower()
+
+# Execute SQL query
+cursor.execute("SELECT mobile_no FROM contacts WHERE LOWER(name) LIKE ? OR LOWER(name) LIKE ?", ('%' + query + '%', query + '%'))
+results = cursor.fetchall()
+
+# Check if there are results before accessing
+if results:
+    print(results[0][0])  # Print the first mobile number if available
+else:
+    print("No matching contact found.")'''
+
 

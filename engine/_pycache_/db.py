@@ -74,3 +74,9 @@ with open('contacts.csv', 'r', encoding='utf-8') as csvfile:
 conn.commit()
 conn.close()
 print("Data imported successfully.")
+
+#  4. Insert Single contacts (Optional)
+query = "INSERT INTO contacts VALUES (null,'pawan', '1234567890')"
+cursor.execute(query)
+conn.commit()
+

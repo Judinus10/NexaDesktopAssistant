@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect("jarvis.db")
+conn = sqlite3.connect("nexa.db")
 cursor = conn.cursor()
 
 
@@ -11,12 +11,12 @@ cursor.execute(query)
 #insert into table
 '''query = """
 INSERT INTO sys_command (id, name, path) 
-VALUES (004, 'vscode', '"C:\\Users\\ASUS\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code.lnk"')
+VALUES (002, 'Whatsapp', '"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs"')
 """
 cursor.execute(query)
-conn.commit()'''
+conn.commit()
 
-
+print("Added Successfully" )'''
 
 #create a table web command
 
@@ -28,7 +28,10 @@ cursor.execute(query)
 conn.commit()'''
 
 # testing module
-app_name = "Github Desktop"
+app_name = "Whatsapp"
 cursor.execute('SELECT path FROM sys_command WHERE name IN (?)', (app_name,))
 results = cursor.fetchall()
-print(results[0])
+if results:  # Check if results is not empty
+    print(results[0])  # Access the first element of the results
+else:
+    print("No results found for:", app_name) 

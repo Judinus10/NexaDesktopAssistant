@@ -43,7 +43,22 @@ $(document).ready(function () {
         eel.playAssistantSound()
         $("#Oval").attr("hidden", true);
         $("#siriWave").attr("hidden", false);
-        eel.takecommand()()
+        eel.allCommands()()
     });
+
+    function doc_keyUp(e) {
+        // this would test for whichever key is 40 (down arrow) and the ctrl key at the same time
+
+        console.log("Key pressed: ", e.key);
+
+        if (e.key === 'b' && (e.ctrlKey || e.metaKey)) {
+            console.log("Ctrl+J or Cmd+J detected");
+            eel.playAssistantSound()
+            $("#Oval").attr("hidden", true);
+            $("#siriWave").attr("hidden", false);
+            eel.allCommands()
+        }
+    }
+    document.addEventListener('keyup', doc_keyUp, false);
 
 });

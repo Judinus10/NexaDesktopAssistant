@@ -3,6 +3,7 @@ import re
 import sqlite3
 from playsound import playsound
 import eel
+from engine._pycache_.helper import remove_words
 from pyttsx3 import speak
 from engine._pycache_.config import ASSISTANT_NAME
 import pywhatkit as kit
@@ -123,3 +124,24 @@ def PlayYoutube(query):
 #             audio_stream.close()
 #         if paud is not None:
 #             paud.terminate()
+
+# Find Contacts
+def findContact(query):
+    
+    
+    words_to_remove = [ASSISTANT_NAME, 'make', 'a', 'to', 'phone', 'call', 'send', 'message', 'wahtsapp', 'video']
+    query = remove_words(query, words_to_remove)
+
+    try:
+        query = query.strip().lower()
+        cursor.execute("SELECT mobile_no FROM contacts WHERE LOWER(name) LIKE ? OR LOWER(name) LIKE ?", ('%' + query + '%', query + '%'))
+        results = cursor.fetchall()
+        print(results[0][0])
+        mobile_number_str = str(results[0][0])
+        if not mobile_number_str.startswith('+91'):
+            mobile_number_str = '+91' + mobile_number_str
+
+        return mobile_number_str, query
+    except:
+        speak('not exist in contacts')
+        return 0, 0

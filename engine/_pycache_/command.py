@@ -3,6 +3,7 @@ import pyttsx3
 import speech_recognition as sr
 import eel
 import time
+from engine._pycache_.features import findContact, whatsApp
 
 
 def speak(text):
@@ -52,6 +53,22 @@ def allCommands():
         elif "on youtube":
             from engine._pycache_.features import PlayYoutube
             PlayYoutube(query)
+        elif "send message" in query or "phone call" in query or "video call" in query:
+            flag = ""
+            contact_no, name = findContact(query)
+            if(contact_no != 0):
+
+                if "send message" in query:
+                    flag = 'message'
+                    speak("what message to send")
+                    query = takecommand()
+                    
+                elif "phone call" in query:
+                    flag = 'call'
+                else:
+                    flag = 'video call'
+                    
+                whatsApp(contact_no, query, flag, name)
         else :
             print("Not` Run")
     except:

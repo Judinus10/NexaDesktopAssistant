@@ -88,4 +88,12 @@ $(document).ready(function () {
             $("#SendBtn").attr('hidden', false);
         }
     }
+
+    // key up event handler on text box
+    $("#chatbox").keyup(function () {
+
+        let message = $("#chatbox").val();
+        ShowHideButton(message)
+    
+    });
 });

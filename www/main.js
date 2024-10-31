@@ -96,4 +96,13 @@ $(document).ready(function () {
         ShowHideButton(message)
     
     });
+
+    // send button event handler
+    $("#SendBtn").click(function () {
+    
+        let message = $("#chatbox").val()
+        PlayAssistant(message)
+    
+    });
+    
 });

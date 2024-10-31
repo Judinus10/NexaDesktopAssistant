@@ -61,6 +61,22 @@ $(document).ready(function () {
     }
     document.addEventListener('keyup', doc_keyUp, false);
 
+
+    // to play assisatnt 
+    function PlayAssistant(message) {
+
+        if (message != "") {
+
+            $("#Oval").attr("hidden", true);
+            $("#SiriWave").attr("hidden", false);
+            eel.allCommands(message);
+            $("#chatbox").val("")
+            $("#MicBtn").attr('hidden', false);
+            $("#SendBtn").attr('hidden', true);
+
+        }
+
+    }
     // toogle fucntion to hide and display mic and send button 
     function ShowHideButton(message) {
         if (message.length == 0) {

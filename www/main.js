@@ -61,4 +61,15 @@ $(document).ready(function () {
     }
     document.addEventListener('keyup', doc_keyUp, false);
 
+    // toogle fucntion to hide and display mic and send button 
+    function ShowHideButton(message) {
+        if (message.length == 0) {
+            $("#MicBtn").attr('hidden', false);
+            $("#SendBtn").attr('hidden', true);
+        }
+        else {
+            $("#MicBtn").attr('hidden', true);
+            $("#SendBtn").attr('hidden', false);
+        }
+    }
 });

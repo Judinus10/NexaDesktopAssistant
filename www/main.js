@@ -104,5 +104,14 @@ $(document).ready(function () {
         PlayAssistant(message)
     
     });
+
+     // enter press event handler on chat box
+     $("#chatbox").keypress(function (e) {
+        key = e.which;
+        if (key == 13) {
+            let message = $("#chatbox").val()
+            PlayAssistant(message)
+        }
+    });
     
 });

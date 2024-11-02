@@ -46,8 +46,10 @@ def allCommands(message=1):
     if message == 1:
         query = takecommand()
         print(query)
+        eel.senderText(query)
     else:
         query = message
+        eel.senderText(query)
         
     try:
 

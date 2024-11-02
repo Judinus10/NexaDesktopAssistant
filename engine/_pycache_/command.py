@@ -46,14 +46,10 @@ def allCommands(message=1):
     if message == 1:
         query = takecommand()
         print(query)
-        eel.senderText(query)
     else:
         query = message
-        eel.senderText(query)
         
     try:
-        query = takecommand()
-        print(query)
 
         if "open" in query:
             from engine._pycache_.features import openCommand

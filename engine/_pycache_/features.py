@@ -187,3 +187,4 @@ def whatsApp(mobile_no, message, flag, name):
 
     pyautogui.hotkey('enter')
     speak(nexa_message)
+    

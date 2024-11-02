@@ -15,5 +15,4 @@ $(document).ready(function () {
         $("#Oval").attr("hidden", false);
         $("#siriWave").attr("hidden", true);
     }
-    
 });

@@ -7,6 +7,7 @@ from engine._pycache_.features import findContact, whatsApp
 
 
 def speak(text):
+    text=str(text)
     engine = pyttsx3.init('sapi5')
     voices = engine.getProperty('voices')
     engine.setProperty('voice', voices[0].id)
@@ -77,7 +78,8 @@ def allCommands(message=1):
                     
                 whatsApp(contact_no, query, flag, name)
         else :
-            print("Not` Run")
+            from engine._pycache_.features import chatBot
+            chatBot(query)
     except:
         print("Error!")
 

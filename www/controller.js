@@ -44,6 +44,6 @@ $(document).ready(function () {
             // Scroll to the bottom of the chat box
             chatBox.scrollTop = chatBox.scrollHeight;
         }
-        
+        console.log("Receiver text added:", message)
     }
 });
